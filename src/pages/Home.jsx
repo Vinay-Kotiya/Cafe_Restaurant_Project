@@ -2,20 +2,21 @@ import React, { useRef } from "react";
 import ShinyText from "../components/ShinyButton";
 import Navbar from "../components/Navbar";
 import VariableProximity from "../components/HoveronText";
+import Menu from "./Menu";
 const Home = () => {
   const containerRef = useRef(null);
   return (
-    <div className="h-full w-full">
+    <div className="h-screen w-full">
       {/* <div   className="h-screen flex-col items-center w-full"> */}
       <Navbar />
-      <div className="flex justify-center items-center h-screen   bg-gray-300">
+      <div className="flex justify-center items-center h-full   bg-gray-300">
         <div className="md:w-[45%] w-full ">
           <h1 className="text-6xl">Savor the Essence of Indian Cuisine</h1>
-          <p className="md:text-xl text-3xl">
+          {/* <p className="md:text-xl text-3xl">
             Welcome to our vibrant Indian-themed café and restaurant, where
             every dish tells a story. Join us to indulge in the rich flavors and
             aromas of authentic Indian cuisine, crafted with love and tradition.
-          </p>
+          </p> */}
           <div
             ref={containerRef}
             style={{ position: "relative" }}
@@ -42,7 +43,7 @@ const Home = () => {
           /> */}
 
           <button class="cta">
-            <span>Hover me</span>
+            <span>Explore Now</span>
             <svg width="15px" height="10px" viewBox="0 0 13 10">
               <path d="M1,5 L11,5"></path>
               <polyline points="8 1 12 5 8 9"></polyline>
