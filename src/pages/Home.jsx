@@ -1,37 +1,102 @@
 import React, { useRef } from "react";
-import ShinyText from "../components/ShinyButton";
+
 import Navbar from "../components/Navbar";
-import VariableProximity from "../components/HoveronText";
-import Menu from "./Menu";
+import HeroImage from "../assets/HeroImage2.png";
+import gsap from "gsap";
+import { useEffect } from "react";
+import Magnet from "../ReactBits/Magnet/Magnet";
+import BlurText from "../ReactBits/BlurText/BlurText";
+import TiltedCard from "../ReactBits/TiltedCard/TiltedCard";
+
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
 const Home = () => {
+  const loaderRef = useRef(null);
   const containerRef = useRef(null);
+
+  useEffect(() => {
+    const tl = gsap.timeline({
+      defaults: { duration: 1, ease: "power1.inOut" },
+    });
+    tl.set(".loadAnimation1", {
+      opacity: 0,
+      y: -20,
+    });
+    tl.to(".loadAnimation1", {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: "power1.inOut",
+    });
+    tl.set(".loadAnimation2", {
+      opacity: 0,
+      y: -20,
+    });
+    tl.to(".loadAnimation2", {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: "power1.inOut",
+    });
+    tl.set(".loadAnimation3", {
+      opacity: 0,
+      y: -20,
+    });
+    tl.to(".loadAnimation3", {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+
+      ease: "power1.inOut",
+    });
+    gsap.set(".loadImageAnimation", {
+      opacity: 0,
+      y: -20,
+    });
+    gsap.to(".loadImageAnimation", {
+      opacity: 1,
+      y: 0,
+      duration: 1,
+      ease: "power1.inOut",
+    });
+  }, []);
   return (
-    <div className="h-screen w-full">
+    <div id="home" className="h-screen relative w-full overflow-hidden">
       {/* <div   className="h-screen flex-col items-center w-full"> */}
       <Navbar />
-      <div className="flex justify-center items-center h-full   bg-gray-300">
-        <div className="md:w-[45%] w-full ">
-          <h1 className="text-6xl">Savor the Essence of Indian Cuisine</h1>
-          {/* <p className="md:text-xl text-3xl">
-            Welcome to our vibrant Indian-themed café and restaurant, where
-            every dish tells a story. Join us to indulge in the rich flavors and
-            aromas of authentic Indian cuisine, crafted with love and tradition.
-          </p> */}
+
+      <div className="flex justify-center items-center h-full flex-col md:flex-row  bg-gray-300">
+        <div className="md:w-[45%] w-full p-5 ">
+          {/* <h1 className="loadAnimation1 headding md:text-6xl text-4xl">
+            “Authentic Flavors of India, Served with Love”
+          </h1> */}
+          <BlurText
+            text=" “Authentic Flavors of India, Served with Love”"
+            delay={100}
+            animateBy="words"
+            direction="top"
+            // onAnimationComplete={handleAnimationComplete}
+            className="loadAnimation1 headding md:text-6xl text-4xl"
+          />
           <div
             ref={containerRef}
             style={{ position: "relative" }}
             className="md:text-xl text-3xl"
           >
-            <VariableProximity
-              label={
-                "Welcome to our vibrant Indian-themed café and restaurant, where every dish tells a story. Join us to indulge in the rich flavors and aromas of authentic Indian cuisine, crafted with love and tradition."
-              }
-              className={"variable-proximity-demo"}
-              fromFontVariationSettings="'wght' 400, 'opsz' 9"
-              toFontVariationSettings="'wght' 1000, 'opsz' 40"
-              containerRef={containerRef}
-              radius={100}
-              falloff="gaussian"
+            {/* <div className="loadAnimation2 text-gray-700  text-2xl">
+              Experience authentic vegetarian Indian cuisine crafted with love,
+              tradition, and fresh ingredients. From classic curries to sizzling
+              tandoori dishes, we bring you the flavors of India—straight from
+              our kitchen to your table..
+            </div> */}
+            <BlurText
+              text="Experience authentic vegetarian Indian cuisine crafted with love,tradition, and fresh ingredients. From classic curries to sizzling tandoori dishes, we bring you the flavors of India—straight from our kitchen to your table.."
+              delay={100}
+              animateBy="words"
+              direction="top"
+              // onAnimationComplete={handleAnimationComplete}
+              className="loadAnimation2 text-gray-700  text-2xl"
             />
           </div>
 
@@ -42,22 +107,50 @@ const Home = () => {
             className="custom-class"
           /> */}
 
-          <button class="cta">
+          <Magnet padding={100} disabled={false} magnetStrength={5}>
+            <button className="loadAnimation3 cta">
+              <span>Explore Now</span>
+              <svg width="15px" height="10px" viewBox="0 0 13 10">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+              </svg>
+            </button>
+          </Magnet>
+          {/* 
+          <button class="loadAnimation3 cta">
             <span>Explore Now</span>
             <svg width="15px" height="10px" viewBox="0 0 13 10">
               <path d="M1,5 L11,5"></path>
               <polyline points="8 1 12 5 8 9"></polyline>
             </svg>
-          </button>
+          </button> */}
 
           {/* <button className="bg-blue-500 text-white rounded mt-4 hover:bg-blue-700 transition duration-300">
             <p className="m-5">Explore Now</p>
           </button> */}
         </div>
-        <div className="w-[45%] md:flex hidden">
-          <img
+        <div className="loadImageAnimation md:w-[45%] md:flex justify-center items-center">
+          {/* <img
             className="h-full"
-            src="https://t4.ftcdn.net/jpg/02/84/46/89/360_F_284468940_1bg6BwgOfjCnE3W0wkMVMVqddJgtMynE.jpg"
+            // src="https://t4.ftcdn.net/jpg/02/84/46/89/360_F_284468940_1bg6BwgOfjCnE3W0wkMVMVqddJgtMynE.jpg"
+            src={HeroImage}
+          /> */}
+          <TiltedCard
+            imageSrc={HeroImage}
+            altText="Kendrick Lamar - GNX Album Cover"
+            captionText="INDIAN FLAVORS"
+            containerHeight="500px"
+            containerWidth="500px"
+            imageHeight="400px"
+            imageWidth="400px"
+            rotateAmplitude={12}
+            scaleOnHover={1.2}
+            showMobileWarning={false}
+            showTooltip={true}
+            displayOverlayContent={true}
+            // overlayContent={
+            //   <p className="tilted-card-demo-text">Kendrick Lamar - GNX</p>
+            // }
           />
         </div>
       </div>

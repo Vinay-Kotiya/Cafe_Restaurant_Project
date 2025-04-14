@@ -1,20 +1,33 @@
 import React from "react";
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
+
 import "./App.css";
 import Home from "./pages/Home";
-import Navbar from "./components/Navbar";
+
 import Menu from "./pages/Menu";
 import Reserve from "./pages/Reserve";
+import useSmoothScroll from "./components/SmoothScroll";
+import VirtualTour from "./pages/VirtualTour";
+
+import CircularText from "./ReactBits/CircularText/CircularText";
 
 function App() {
+  useSmoothScroll();
   return (
     <>
-      <div className="bg-white w-full px-10 flex justify-center items-center  flex-col">
+      <div className="h-10 absolute hidden md:flex  z-50 right-15 md:right-30 bottom-0 ">
+        <CircularText
+          text="AUTHENTIC*INDIAN*FLAVORS*"
+          onHover="speedUp"
+          spinDuration={20}
+          className="custom-class text-black  "
+        />
+      </div>
+
+      <div className="bg-white w-full md:px-0 flex justify-center items-center  flex-col">
         <Home />
         <Menu />
         <Reserve />
+        <VirtualTour />
       </div>
     </>
   );

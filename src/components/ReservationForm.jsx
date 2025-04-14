@@ -1,116 +1,223 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import { motion, AnimatePresence } from "framer-motion";
+import "react-datepicker/dist/react-datepicker.css";
+import PixelCard from "../ReactBits/PixelCard/PixelCard";
 
-const ReservationForm = () => {
-  const [formSubmitted, setFormSubmitted] = useState(false);
+const timeSlots = [
+  "12:00 PM",
+  "1:00 PM",
+  "2:00 PM",
+  "6:00 PM",
+  "7:00 PM",
+  "8:00 PM",
+];
 
-  // Refs to access and clear input fields
-  const dateRef = useRef();
-  const timeRef = useRef();
-  const guestsRef = useRef();
-  const requestsRef = useRef();
+export default function ReservationForm() {
+  const [formData, setFormData] = useState({
+    date: null,
+    time: "",
+    guests: 1,
+    name: "",
+    phone: "",
+    email: "",
+  });
+
+  const [errors, setErrors] = useState({});
+  const [showModal, setShowModal] = useState(false);
+
+  const handleChange = (field, value) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const validate = () => {
+    const newErrors = {};
+    if (!formData.date) newErrors.date = "Please select a date.";
+    if (!formData.time) newErrors.time = "Please choose a time slot.";
+    if (formData.guests < 1) newErrors.guests = "At least 1 guest is required.";
+    if (!formData.name.trim()) newErrors.name = "Name is required.";
+    if (!formData.phone.match(/^\d{10}$/))
+      newErrors.phone = "Enter a valid 10-digit phone number.";
+    if (!formData.email.match(/^\S+@\S+\.\S+$/))
+      newErrors.email = "Enter a valid email address.";
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!validate()) return;
 
-    // Show success popup
-    setFormSubmitted(true);
-
-    // Clear all input values
-    dateRef.current.value = "";
-    timeRef.current.value = "";
-    guestsRef.current.value = "";
-    requestsRef.current.value = "";
-
-    // Hide popup after 3 seconds
-    setTimeout(() => {
-      setFormSubmitted(false);
-    }, 3000);
+    localStorage.setItem("reservationData", JSON.stringify(formData));
+    setShowModal(true);
+    setFormData({
+      date: null,
+      time: "",
+      guests: 1,
+      name: "",
+      phone: "",
+      email: "",
+    });
   };
 
   return (
-    <div className="min-h-screen w-full flex items-center justify-center bg-gray-100 px-4">
-      <form
-        onSubmit={handleSubmit}
-        className="w-full h-full max-w-md bg-gray-200 rounded-2xl shadow-lg p-6 relative"
-      >
-        <h2 className="text-2xl font-bold text-center mb-6">Book Your Table</h2>
+    <PixelCard
+      variant="blue"
+      gap={3}
+      speed={100}
+      className="w-full h-full  m-2 md:m-10 top-0 left-0 right-0 bottom-0 flex items-center justify-center"
+      // className="w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto p-6 sm:p-8 m-4 bg-white z-50 rounded-2xl shadow-lg"
+    >
+      <div className="w-full h-full max-w-md absolute sm:max-w-lg md:max-w-xl mx-auto p-6 sm:p-8  bg-transparent z-50 rounded-2xl shadow-lg">
+        <h1 className="text-3xl sm:text-4xl font-bold mb-2 text-center text-gray-800 z-50">
+          Reserve a Table
+        </h1>
+        <p className="text-gray-500 text-center mb-4">Book your spot now!</p>
 
-        {/* Date */}
-        <div className="mb-4">
-          <label htmlFor="date" className="block text-gray-700 mb-1">
-            Date
-          </label>
-          <input
-            id="date"
-            type="date"
-            ref={dateRef}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          />
-        </div>
-
-        {/* Time */}
-        <div className="mb-4">
-          <label htmlFor="time" className="block text-gray-700 mb-1">
-            Time
-          </label>
-          <input
-            id="time"
-            type="time"
-            ref={timeRef}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          />
-        </div>
-
-        {/* Guests */}
-        <div className="mb-4">
-          <label htmlFor="guests" className="block text-gray-700 mb-1">
-            Number of Guests
-          </label>
-          <input
-            id="guests"
-            type="number"
-            min={1}
-            max={20}
-            placeholder="e.g., 4"
-            ref={guestsRef}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
-            required
-          />
-        </div>
-
-        {/* Special Requests */}
-        <div className="mb-6">
-          <label htmlFor="requests" className="block text-gray-700 mb-1">
-            Special Requests
-          </label>
-          <input
-            id="requests"
-            type="text"
-            placeholder="Any special requests?"
-            ref={requestsRef}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-black"
-          />
-        </div>
-
-        {/* Submit */}
-        <button
-          type="submit"
-          className="w-full bg-black text-white py-2 rounded-xl hover:bg-gray-800 transition duration-300"
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4 z-50 bg-transparent h-full"
         >
-          Reserve Now
-        </button>
-
-        {/* Success Popup */}
-        {formSubmitted && (
-          <div className="absolute top-[-2.5rem] left-1/2 transform -translate-x-1/2 bg-green-300 text-white px-4 py-2 rounded-lg shadow-md">
-            🎉 Reservation Submitted Successfully!
+          {/* Date */}
+          <div>
+            <label className="block font-medium">Select Date</label>
+            <DatePicker
+              selected={formData.date}
+              onChange={(date) => handleChange("date", date)}
+              className="w-full border p-2 rounded mt-1 bg-white"
+              minDate={new Date()}
+              dateFormat="MMMM d, yyyy"
+            />
+            {errors.date && (
+              <p className="text-red-500 text-sm">{errors.date}</p>
+            )}
           </div>
-        )}
-      </form>
-    </div>
-  );
-};
 
-export default ReservationForm;
+          {/* Time */}
+          <div>
+            <label className="block font-medium">Select Time</label>
+            <div className="flex flex-wrap gap-2 mt-2">
+              {timeSlots.map((slot) => (
+                <button
+                  key={slot}
+                  type="button"
+                  className={`px-3 py-1 rounded border text-sm transition ${
+                    formData.time === slot
+                      ? "bg-blue-600 text-white"
+                      : "bg-gray-100 hover:bg-gray-200"
+                  }`}
+                  onClick={() => handleChange("time", slot)}
+                >
+                  {slot}
+                </button>
+              ))}
+            </div>
+            {errors.time && (
+              <p className="text-red-500 text-sm">{errors.time}</p>
+            )}
+          </div>
+
+          {/* Guests */}
+          <div>
+            <label className="block font-medium">Guests</label>
+            <input
+              type="number"
+              value={formData.guests}
+              onChange={(e) => handleChange("guests", parseInt(e.target.value))}
+              min="1"
+              className="w-full border p-2 rounded mt-1 bg-white"
+              placeholder="Number of guests"
+            />
+            {errors.guests && (
+              <p className="text-red-500 text-sm">{errors.guests}</p>
+            )}
+          </div>
+
+          {/* Name */}
+          <div>
+            <label className="block font-medium">Name</label>
+            <input
+              type="text"
+              value={formData.name}
+              onChange={(e) => handleChange("name", e.target.value)}
+              className="w-full border p-2 rounded mt-1 bg-white"
+              placeholder="Your name"
+            />
+            {errors.name && (
+              <p className="text-red-500 text-sm">{errors.name}</p>
+            )}
+          </div>
+
+          {/* Phone */}
+          <div>
+            <label className="block font-medium">Phone</label>
+            <input
+              type="tel"
+              value={formData.phone}
+              onChange={(e) => handleChange("phone", e.target.value)}
+              className="w-full border p-2 rounded mt-1 bg-white"
+              placeholder="Your phone number"
+            />
+            {errors.phone && (
+              <p className="text-red-500 text-sm">{errors.phone}</p>
+            )}
+          </div>
+
+          {/* Email */}
+          <div>
+            <label className="block font-medium">Email</label>
+            <input
+              type="email"
+              value={formData.email}
+              onChange={(e) => handleChange("email", e.target.value)}
+              className="w-full border p-2 rounded mt-1 bg-white"
+              placeholder="you@example.com"
+            />
+            {errors.email && (
+              <p className="text-red-500 text-sm">{errors.email}</p>
+            )}
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full bg-green-600 text-white py-2 rounded hover:bg-green-700 transition"
+          >
+            Confirm Reservation
+          </button>
+        </form>
+
+        {/* Confirmation Modal */}
+        <AnimatePresence>
+          {showModal && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 px-4"
+              onClick={() => setShowModal(false)}
+            >
+              <motion.div
+                onClick={(e) => e.stopPropagation()}
+                className="bg-white max-w-md w-full p-6 rounded-xl shadow-xl text-center"
+              >
+                <h3 className="text-2xl font-bold text-green-600">
+                  Reservation Confirmed!
+                </h3>
+                <p className="mt-2 text-gray-600">
+                  We look forward to serving you!
+                </p>
+                <button
+                  className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+                  onClick={() => setShowModal(false)}
+                >
+                  Close
+                </button>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </PixelCard>
+  );
+}

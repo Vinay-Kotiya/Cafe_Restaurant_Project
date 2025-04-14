@@ -1,4 +1,4 @@
-import { forwardRef, useMemo, useRef, useEffect } from "react";
+import React, { forwardRef, useMemo, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 
 function useAnimationFrame(callback) {
@@ -71,7 +71,7 @@ const VariableProximity = forwardRef((props, ref) => {
           .map((s) => {
             const [name, value] = s.split(" ");
             return [name.replace(/['"]/g, ""), parseFloat(value)];
-          }),
+          })
       );
 
     const fromSettings = parseSettings(fromFontVariationSettings);
@@ -121,7 +121,7 @@ const VariableProximity = forwardRef((props, ref) => {
         mousePositionRef.current.x,
         mousePositionRef.current.y,
         letterCenterX,
-        letterCenterY,
+        letterCenterY
       );
 
       if (distance >= radius) {

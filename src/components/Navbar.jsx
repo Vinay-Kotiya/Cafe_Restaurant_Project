@@ -1,9 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { use, useEffect, useRef, useState } from "react";
 import { Link } from "react-scroll";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import dayImg from "../assets/day-of-sun.svg";
 import nightImg from "../assets/moon-stars.svg";
+// import logoImg from "../assets/Annapurna_logo.png";
+import logoImg from "../assets/logo22.png";
 import { motion, useScroll } from "motion/react";
 const Navbar = () => {
   const menuCon = useRef(null);
@@ -12,7 +14,15 @@ const Navbar = () => {
   const menuList = useRef(null);
   // State to hold the current icon
   const [icon, setIcon] = useState(dayImg); // Default to day icon
-  const navLinks = ["Home", "Reserve", "Menu", "Gallery", "Contact"];
+  const navLinks = [
+    "Home",
+    "Menu",
+    "Reserve",
+
+    "Virtual Tour",
+    "Customize",
+    "Cart",
+  ];
   const logo = useRef(null);
   const menuComeAnimation = () => {
     // alert("animation call");
@@ -82,6 +92,41 @@ const Navbar = () => {
       document.body.style.color = "white";
     }
   };
+  useEffect(() => {
+    const tl = gsap.timeline({
+      defaults: { duration: 1, ease: "power1.inOut" },
+    });
+    gsap.set(logo.current, {
+      opacity: 0,
+      y: -20,
+    });
+    gsap.to(logo.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: "power1.inOut",
+    });
+    gsap.set(menuIconIn.current, {
+      opacity: 0,
+      y: -20,
+    });
+    gsap.to(menuIconIn.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: "power1.inOut",
+    });
+    tl.set(menuList.current, {
+      opacity: 0,
+      y: -20,
+    });
+    tl.to(menuList.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: "power1.inOut",
+    });
+  }, []);
   return (
     <>
       <div
@@ -100,7 +145,7 @@ const Navbar = () => {
             {navLinks.map((link, index) => (
               <li
                 key={index}
-                className="border-2  hover:border-black hover:text-black hover:bg-[#ffbd59] hover:shadow-md hover:shadow-slate-700 rounded-full w-full text-center p-3 text-[#000000]"
+                className="border-2  hover:border-black hover:text-black hover:bg-[#ffa683f0] hover:shadow-md hover:shadow-slate-700 rounded-full w-full text-center p-3 text-[#000000]"
               >
                 <Link
                   to={`${link.toLowerCase()}`}
@@ -120,7 +165,8 @@ const Navbar = () => {
 
       <div className="py-5 flex justify-between items-center px-5 md:justify-around">
         <img
-          src="https://www.svgrepo.com/show/393360/restaurant.svg"
+          // src="https://www.svgrepo.com/show/393360/restaurant.svg"
+          src={logoImg}
           ref={logo}
           className="h-16 drop-shadow-[0_5px_7px_rgba(0,0,0)]"
         />
@@ -128,7 +174,7 @@ const Navbar = () => {
         <span className="flex gap-5 md:hidden">
           <img
             ref={menuIconIn}
-            className="h-10"
+            className="h-10 "
             src="https://www.svgrepo.com/show/474904/menu.svg"
           />
         </span>
@@ -142,7 +188,7 @@ const Navbar = () => {
                 smooth={true}
                 offset={0}
                 duration={700}
-                className="text-2xl text-[#000000] drop-shadow-[0_1px_1px_rgba(1,1,1,1)] hover:text-[#f6ff50] font-bold gap-7 relative after:content-[''] after:absolute after:w-full after:h-[1.5px] after:bg-[#ffbd59] after:left-0 after:bottom-0 after:scale-x-0 after:origin-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-left"
+                className=" text-2xl text-[#000000] drop-shadow-[0_1px_1px_rgba(1,1,1,1)] hover:text-[#c25a5a] font-bold gap-7 relative after:content-[''] after:absolute after:w-full after:h-[1.5px] after:bg-[#ffbd59] after:left-0 after:bottom-0 after:scale-x-0 after:origin-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-left"
               >
                 {link}
               </Link>
