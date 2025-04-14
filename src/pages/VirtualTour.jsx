@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-import diningImg from "../assets/dining.jpg";
+import diningImg from "../assets/dining2.png";
 import kitchenImg from "../assets/kitchen.avif";
 import barImg from "../assets/bar.avif";
 import MagnetLines from "../ReactBits/MagnetLines/MagnetLines";

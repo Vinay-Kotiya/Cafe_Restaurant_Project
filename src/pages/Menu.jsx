@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import menuData from "../data/menu.json";
-
+import CircularGallery from "../ReactBits/CircularGallery/CircularGallery";
+import TextPressure from "../ReactBits/TextPressure/TextPressure";
+import ScrollVelocity from "../ReactBits/ScrollVelocity/ScrollVelocity";
 const cardVariants = {
   hidden: { opacity: 0, y: 40 },
   visible: (i) => ({
@@ -29,16 +31,48 @@ export default function Menu() {
   const showMore = () => {
     setVisibleCount((prev) => prev + 6);
   };
+  // console.log(menuData);
+  const itemsDetails = menuData.map((item) => {
+    return { image: item.image, text: item.name };
+  });
+  // console.log(itemsDetails);
 
   return (
     <div
       id="menu"
-      className=" w-full  bg-gray-300 flex justify-center items-center flex-col"
+      className=" w-full h-screen overflow-hidden bg-gray-300 flex justify-center items-center flex-col"
     >
-      <h1 className="text-4xl m-2 ">Menu</h1>
+      <h1 className="text-4xl  m-2 ">
+        <TextPressure
+          text={"MENU"}
+          flex={true}
+          alpha={false}
+          stroke={true}
+          width={false}
+          weight={true}
+          italic={true}
+          textColor="#ffffff"
+          strokeColor="#000"
+          minFontSize={36}
+        />
+      </h1>
+
       <p className="text-gray-500">Explore our offerings</p>
-      {/* Category Tabs */}
-      <div className="flex flex-wrap md:flex-nowrap gap-3 md:gap-4 overflow-x-auto md:overflow-x-visible pb-2 mb-6 border-b">
+      <div className="h-full w-full relative">
+        <CircularGallery
+          items={itemsDetails}
+          bend={1}
+          textColor="#000"
+          borderRadius={0.05}
+        />
+      </div>
+      <ScrollVelocity
+        texts={["* ANNAPURNA", "* INDIAN CUISINE"]}
+        velocity={100}
+        className="custom-scroll-text"
+      />
+
+      {/* <div className="flex flex-wrap md:flex-nowrap gap-3 md:gap-4 overflow-x-auto md:overflow-x-visible pb-2 mb-6 border-b">
         {categories.map((cat) => (
           <button
             key={cat}
@@ -52,7 +86,7 @@ export default function Menu() {
         ))}
       </div>
 
-      {/* Food Grid */}
+    
       <div className="grid grid-cols-1 bg-gray-200 p-4 rounded-2xl  sm:grid-cols-2 md:grid-cols-3 gap-6">
         {filteredMenu.slice(0, visibleCount).map((item, index) => (
           <motion.div
@@ -65,7 +99,7 @@ export default function Menu() {
             whileHover="hover" // triggers animation on entire card hover
             className="bg-white rounded-xl shadow-md overflow-hidden relative group transition-all duration-300 hover:shadow-xl"
           >
-            {/* Image */}
+          
             <div className="relative overflow-hidden">
               <img
                 src={item.image}
@@ -73,7 +107,7 @@ export default function Menu() {
                 className="w-full h-48 object-cover transform transition-transform duration-300 group-hover:scale-105"
               />
 
-              {/* Description overlay with motion variants */}
+             
               <motion.div
                 variants={{
                   hover: { opacity: 1, y: 0 },
@@ -86,7 +120,6 @@ export default function Menu() {
               </motion.div>
             </div>
 
-            {/* Content */}
             <div className="p-4">
               <div className="flex justify-between font-semibold text-lg">
                 <h3>{item.name}</h3>
@@ -95,8 +128,8 @@ export default function Menu() {
             </div>
           </motion.div>
         ))}
-      </div>
-      {visibleCount < filteredMenu.length && (
+      </div> */}
+      {/* {visibleCount < filteredMenu.length && (
         <div className="text-center mt-8">
           <button
             onClick={showMore}
@@ -105,29 +138,7 @@ export default function Menu() {
             Show More
           </button>
         </div>
-      )}
+      )} */}
     </div>
   );
 }
-
-// import React from "react";
-// import menuData from "../data/menu.json";
-// import MenuCard from "../components/MenuCard";
-
-// const Menu = () => {
-//   return (
-//     <div className="h-full w-[95%]  bg-gray-300 flex justify-center items-center flex-col">
-//       <h1 className="text-4xl m-2 ">Menu</h1>
-//       <p className="text-gray-500">Explore our offerings</p>
-//       <div className="h-full flex justify-center items-center flex-col ">
-//         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-5 p-6">
-//           {menuData.map((item) => (
-//             <MenuCard key={item.id} item={item} />
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Menu;

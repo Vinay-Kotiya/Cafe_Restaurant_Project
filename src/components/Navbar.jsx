@@ -6,6 +6,7 @@ import dayImg from "../assets/day-of-sun.svg";
 import nightImg from "../assets/moon-stars.svg";
 // import logoImg from "../assets/Annapurna_logo.png";
 import logoImg from "../assets/logo22.png";
+import TextPressure from "../ReactBits/TextPressure/TextPressure";
 import { motion, useScroll } from "motion/react";
 const Navbar = () => {
   const menuCon = useRef(null);
@@ -14,15 +15,7 @@ const Navbar = () => {
   const menuList = useRef(null);
   // State to hold the current icon
   const [icon, setIcon] = useState(dayImg); // Default to day icon
-  const navLinks = [
-    "Home",
-    "Menu",
-    "Reserve",
-
-    "Virtual Tour",
-    "Customize",
-    "Cart",
-  ];
+  const navLinks = ["Home", "Menu", "Reserve", "Customize", "Virtual Tour"];
   const logo = useRef(null);
   const menuComeAnimation = () => {
     // alert("animation call");
@@ -155,7 +148,18 @@ const Navbar = () => {
                   duration={700}
                   className="text-5xl font-bold md:text-base relative after:content-[''] after:absolute after:w-full after:h-[1.5px] after:bg-[#ffbd59] after:left-0 after:bottom-0 after:scale-x-0 after:origin-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-left"
                 >
-                  {link}
+                  <TextPressure
+                    text={link}
+                    flex={false}
+                    alpha={false}
+                    stroke={true}
+                    width={true}
+                    weight={true}
+                    italic={true}
+                    textColor="#ffffff"
+                    strokeColor="#000"
+                    minFontSize={36}
+                  />
                 </Link>
               </li>
             ))}
@@ -190,7 +194,18 @@ const Navbar = () => {
                 duration={700}
                 className=" text-2xl text-[#000000] drop-shadow-[0_1px_1px_rgba(1,1,1,1)] hover:text-[#c25a5a] font-bold gap-7 relative after:content-[''] after:absolute after:w-full after:h-[1.5px] after:bg-[#ffbd59] after:left-0 after:bottom-0 after:scale-x-0 after:origin-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-left"
               >
-                {link}
+                <TextPressure
+                  text={link}
+                  flex={false}
+                  alpha={false}
+                  stroke={true}
+                  width={false}
+                  weight={true}
+                  italic={true}
+                  textColor="#ffffff"
+                  strokeColor="#000"
+                  minFontSize={36}
+                />
               </Link>
             </li>
           ))}

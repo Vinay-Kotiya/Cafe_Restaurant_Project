@@ -28,9 +28,8 @@ function App() {
         <Home />
         <Menu />
         <Reserve />
+        <Customize />
         <VirtualTour />
-        <Customize></Customize>
-        
       </div>
     </>
   );

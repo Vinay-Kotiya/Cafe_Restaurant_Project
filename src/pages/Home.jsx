@@ -7,6 +7,8 @@ import { useEffect } from "react";
 import Magnet from "../ReactBits/Magnet/Magnet";
 import BlurText from "../ReactBits/BlurText/BlurText";
 import TiltedCard from "../ReactBits/TiltedCard/TiltedCard";
+import TextPressure from "../ReactBits/TextPressure/TextPressure";
+import { Link } from "react-scroll";
 
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -100,34 +102,44 @@ const Home = () => {
             />
           </div>
 
-          {/* <ShinyText
-            text="Just some shiny text!"
-            disabled={false}
-            speed={9}
-            className="custom-class"
-          /> */}
+          <div className="flex justify-between items-center mt-5 md:w-[70%]">
+            <Link
+              to={"virtual tour"}
+              spy={true}
+              smooth={true}
+              offset={0}
+              duration={700}
+            >
+              <Magnet padding={100} disabled={false} magnetStrength={5}>
+                <button className="loadAnimation3 cta flex justify-center items-center">
+                  <span>Explore Now</span>
+                  <svg width="15px" height="10px" viewBox="0 0 13 10">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                  </svg>
+                </button>
+              </Magnet>
+            </Link>
 
-          <Magnet padding={100} disabled={false} magnetStrength={5}>
-            <button className="loadAnimation3 cta">
-              <span>Explore Now</span>
-              <svg width="15px" height="10px" viewBox="0 0 13 10">
-                <path d="M1,5 L11,5"></path>
-                <polyline points="8 1 12 5 8 9"></polyline>
-              </svg>
-            </button>
-          </Magnet>
-          {/* 
-          <button class="loadAnimation3 cta">
-            <span>Explore Now</span>
-            <svg width="15px" height="10px" viewBox="0 0 13 10">
-              <path d="M1,5 L11,5"></path>
-              <polyline points="8 1 12 5 8 9"></polyline>
-            </svg>
-          </button> */}
-
-          {/* <button className="bg-blue-500 text-white rounded mt-4 hover:bg-blue-700 transition duration-300">
-            <p className="m-5">Explore Now</p>
-          </button> */}
+            <Link
+              to={"customize"}
+              spy={true}
+              smooth={true}
+              offset={0}
+              duration={700}
+              className="flex justify-end items-center"
+            >
+              <Magnet padding={100} disabled={false} magnetStrength={5}>
+                <button className="loadAnimation3 cta flex justify-center items-center">
+                  <span>Customize</span>
+                  <svg width="15px" height="10px" viewBox="0 0 13 10">
+                    <path d="M1,5 L11,5"></path>
+                    <polyline points="8 1 12 5 8 9"></polyline>
+                  </svg>
+                </button>
+              </Magnet>
+            </Link>
+          </div>
         </div>
         <div className="loadImageAnimation md:w-[45%] md:flex justify-center items-center">
           {/* <img

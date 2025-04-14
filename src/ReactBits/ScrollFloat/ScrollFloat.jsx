@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useMemo, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -13,7 +13,7 @@ const ScrollFloat = ({
   ease = "back.inOut(2)",
   scrollStart = "center bottom+=50%",
   scrollEnd = "bottom bottom-=40%",
-  stagger = 0.03
+  stagger = 0.03,
 }) => {
   const containerRef = useRef(null);
 
@@ -45,7 +45,7 @@ const ScrollFloat = ({
         yPercent: 120,
         scaleY: 2.3,
         scaleX: 0.7,
-        transformOrigin: "50% 0%"
+        transformOrigin: "50% 0%",
       },
       {
         duration: animationDuration,
@@ -60,7 +60,7 @@ const ScrollFloat = ({
           scroller,
           start: scrollStart,
           end: scrollEnd,
-          scrub: true
+          scrub: true,
         },
       }
     );
@@ -70,7 +70,7 @@ const ScrollFloat = ({
     ease,
     scrollStart,
     scrollEnd,
-    stagger
+    stagger,
   ]);
 
   return (

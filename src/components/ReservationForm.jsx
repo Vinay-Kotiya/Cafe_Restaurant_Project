@@ -69,10 +69,10 @@ export default function ReservationForm() {
       // className="w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto p-6 sm:p-8 m-4 bg-white z-50 rounded-2xl shadow-lg"
     >
       <div className="w-full h-full max-w-md absolute sm:max-w-lg md:max-w-xl mx-auto p-6 sm:p-8  bg-transparent z-50 rounded-2xl shadow-lg">
-        <h1 className="text-3xl sm:text-4xl font-bold mb-2 text-center text-gray-800 z-50">
+        {/* <h1 className="text-3xl sm:text-4xl font-bold mb-2 text-center text-gray-800 z-50">
           Reserve a Table
-        </h1>
-        <p className="text-gray-500 text-center mb-4">Book your spot now!</p>
+        </h1> */}
+        {/* <p className="text-gray-500 text-center mb-4">Book your spot now!</p> */}
 
         <form
           onSubmit={handleSubmit}
@@ -194,7 +194,7 @@ export default function ReservationForm() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 px-4"
+              className="fixed inset-0 bg-transparent bg-opacity-50 flex justify-center items-center z-50 px-4"
               onClick={() => setShowModal(false)}
             >
               <motion.div
