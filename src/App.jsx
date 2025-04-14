@@ -7,6 +7,7 @@ import Menu from "./pages/Menu";
 import Reserve from "./pages/Reserve";
 import useSmoothScroll from "./components/SmoothScroll";
 import VirtualTour from "./pages/VirtualTour";
+import Customize from "./pages/Customize";
 
 import CircularText from "./ReactBits/CircularText/CircularText";
 
@@ -28,6 +29,8 @@ function App() {
         <Menu />
         <Reserve />
         <VirtualTour />
+        <Customize></Customize>
+        
       </div>
     </>
   );
