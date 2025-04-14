@@ -69,7 +69,7 @@ const VirtualTour = () => {
       {sections.map((section, idx) => (
         <div
           key={idx}
-          className="tour-section h-screen w-full relative absolute overflow-hidden flex justify-center items-center"
+          className="tour-section h-screen w-full relative overflow-hidden flex justify-center items-center"
         >
           <img
             src={section.image}
