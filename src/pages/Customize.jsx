@@ -54,7 +54,7 @@ export default function Customize() {
   const finalTotal = total - discount;
 
   return (
-    <div className="bg-gray-100 p-6 relative min-h-screen">
+    <div  id="customize"className="bg-gray-100 p-6 relative min-h-screen">
       {/* Cart Icon */}
       <div className="absolute top-6 right-6 z-50">
         <button className="relative" onClick={() => setCartOpen(true)}>
