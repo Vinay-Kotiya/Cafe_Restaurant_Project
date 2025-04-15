@@ -1,14 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ShoppingCart, Trash2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 // import CustomizeModal from "../Componets/CustomizeModal";
 import CustomizeModal from "../components/CustomizeModal";
-// import menu from "../Data/Menu1";
-import menu from "../data/Menu1";
-
+import menu from "../Data/Menu1";
 import Qr from "/QRCODE.jpg";
-
-
 
 export default function Customize() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,13 +16,13 @@ export default function Customize() {
   const [showQR, setShowQR] = useState(false);
 
   const handleAddToCart = (data) => {
-    setCartItems([...cartItems, data]);
+    setCartItems((prev) => [...prev, data]);
     setIsOpen(false);
-    showToast();
+    showToast("Item added to cart from Customize");
   };
 
   const handleOrderNow = (item) => {
-    setCartItems([...cartItems, item]);
+    setCartItems((prev) => [...prev, item]);
     setCartOpen(true);
     showToast("Item added to cart from Order Now");
   };
@@ -37,31 +33,19 @@ export default function Customize() {
     setCartItems(updated);
   };
 
-  const handlePayment = () => {
-    setShowQR(true);
-    setPaymentStatus("waiting");
-
-    setTimeout(() => {
-      // Simulate a successful payment 50% of the time
-      const success = Math.random() > 0.5;
-
-      if (success) {
-        setPaymentStatus("success");
-        setTimeout(() => {
-          setShowQR(false);
-          setCartOpen(false);
-          setCartItems([]);
-        }, 3000);
-      } else {
-        setPaymentStatus("failed");
-        setTimeout(() => setShowQR(false), 3000);
-      }
-    }, 4000); // Simulate QR scan wait
-  };
-
   const showToast = (msg = "Item has been selected") => {
     setShowMessage(msg);
     setTimeout(() => setShowMessage(false), 3000);
+  };
+
+  const handlePaymentConfirm = () => {
+    setPaymentStatus("success");
+    setTimeout(() => {
+      setShowQR(false);
+      setCartOpen(false);
+      setCartItems([]);
+      setPaymentStatus(null); // Hide message after 3 sec
+    }, 3000);
   };
 
   const total = cartItems.reduce((sum, item) => sum + Number(item.price), 0);
@@ -69,7 +53,7 @@ export default function Customize() {
   const finalTotal = total - discount;
 
   return (
-    <div id="customize" className="bg-gray-100 p-6 relative min-h-screen">
+    <div className="bg-gray-100 p-6 relative min-h-screen">
       {/* Cart Icon */}
       <div className="absolute top-6 right-6 z-50">
         <button className="relative" onClick={() => setCartOpen(true)}>
@@ -89,17 +73,20 @@ export default function Customize() {
         </div>
       )}
 
-      {/* Payment Status Message */}
-      {paymentStatus === "success" && (
-        <div className="fixed top-24 right-6 bg-blue-500 text-white px-4 py-2 rounded shadow-md z-40">
-          Payment Successful! Thank you for your order.
-        </div>
-      )}
-      {paymentStatus === "failed" && (
-        <div className="fixed top-24 right-6 bg-red-500 text-white px-4 py-2 rounded shadow-md z-40">
-          Payment not successful. Please try again.
-        </div>
-      )}
+      {/* Payment Success Message */}
+      <AnimatePresence>
+        {paymentStatus === "success" && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: .5 }}
+            className="fixed top-24 right-6 bg-green-500 text-white px-4 py-2 rounded shadow-md z-40 flex items-center gap-2"
+          >
+            ✅ Payment Successful! Thank you for your order.
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <h1 className="text-4xl font-bold mb-6 text-center">Menu Items</h1>
 
@@ -122,28 +109,22 @@ export default function Customize() {
                 transition: { type: "spring", stiffness: 260, damping: 20 },
               }}
             >
-            <img
-  src={item.image}
-  alt={item.name}
-  className="w-full h-full object-cover transition-all duration-300 group-hover:opacity-40"
-/>
-
-              <AnimatePresence>
-  <motion.div
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-    exit={{ opacity: 0 }}
-    transition={{ duration: 0.3 }}
-    className="absolute inset-0  bg-opacity-10 group-hover:bg-opacity-70 group-hover:flex hidden items-center justify-center text-center transition-all duration-300"
-
-  >
-    <p className="text-slate-900 text-3xl font-bold transition-all duration-300">
-      {item.description}
-    </p>
-  </motion.div>
-</AnimatePresence>
-
-
+              <img
+                src={item.image}
+                alt={item.name}
+                className="w-full h-full object-cover transition-all duration-300 group-hover:opacity-40"
+              />
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="absolute inset-0 bg-opacity-10 group-hover:bg-opacity-70 group-hover:flex hidden items-center justify-center text-center transition-all duration-300"
+              >
+                <p className="text-slate-900 text-3xl font-bold">
+                  {item.description}
+                </p>
+              </motion.div>
             </motion.div>
 
             <div className="p-4">
@@ -185,8 +166,7 @@ export default function Customize() {
 
       {/* Cart Modal */}
       {cartOpen && (
-        <div className="fixed inset-0   bg-opacity-10 flex justify-center items-start pt-20 z-50"
->
+        <div className="fixed inset-0 bg-black bg-opacity-10 flex justify-center items-start pt-20 z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md mx-auto relative">
             <button
               onClick={() => setCartOpen(false)}
@@ -200,34 +180,46 @@ export default function Customize() {
               <p className="text-gray-600">Your cart is empty.</p>
             ) : (
               <>
-                <ul className="space-y-4 max-h-64 overflow-y-auto pr-2">
-                {cartItems.map((item, index) => (
-  <li
-    key={index}
-    className="flex items-center justify-between border-b pb-3"
-  >
-    <div className="flex items-center gap-4">
-      <img
-        src={item.image}
-        alt={item.name}
-        className="w-14 h-14 object-cover rounded-md"
-      />
-      <div>
-        <p className="font-medium">{item.name}</p>
-        <p className="text-sm text-gray-500">₹{item.price}</p>
-      </div>
-    </div>
-    <button
-      onClick={() => handleRemoveFromCart(index)}
-      className="text-red-500 hover:text-red-700"
-      title="Remove"
+              <ul className="space-y-4 max-h-64 overflow-y-auto pr-2">
+  {cartItems.map((item, index) => (
+    <li
+      key={index}
+      className="flex items-start justify-between border-b pb-3 gap-4"
     >
-      <Trash2 className="w-5 h-5" />
-    </button>
-  </li>
-))}
+      <div className="flex gap-4">
+        <img
+          src={item.image}
+          alt={item.name}
+          className="w-16 h-16 object-cover rounded-md"
+        />
+        <div>
+          <p className="font-medium">{item.name}</p>
+          <p className="text-sm text-gray-500">₹{item.price.toFixed(2)}</p>
+          {item.customization && (
+            <div className="text-xs text-gray-600 mt-1 space-y-1">
+              <p><strong>Spice:</strong> {item.customization.spice}</p>
+              {item.customization.toppings?.length > 0 && (
+                <p><strong>Toppings:</strong> {item.customization.toppings.join(", ")}</p>
+              )}
+              {item.customization.sides?.length > 0 && (
+                <p><strong>Sides:</strong> {item.customization.sides.join(", ")}</p>
+              )}
+              <p><strong>Qty:</strong> {item.customization.quantity}</p>
+            </div>
+          )}
+        </div>
+      </div>
+      <button
+        onClick={() => handleRemoveFromCart(index)}
+        className="text-red-500 hover:text-red-700 mt-2"
+        title="Remove"
+      >
+        <Trash2 className="w-5 h-5" />
+      </button>
+    </li>
+  ))}
+</ul>
 
-                </ul>
 
                 <div className="mt-6 border-t pt-4">
                   <p className="text-right text-lg font-bold text-slate-700">
@@ -241,20 +233,29 @@ export default function Customize() {
                   <p className="text-right text-lg font-bold text-slate-900">
                     Payable: ₹{finalTotal.toFixed(2)}
                   </p>
-                  <button
-                    onClick={handlePayment}
-                    className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md text-sm"
-                  >
-                    Proceed to Payment
-                  </button>
-                </div>
 
-                {showQR && (
-                  <div className="mt-4 text-center">
-                    <img src={Qr} alt="QR Code" className="mx-auto" />
-                    <p className="mt-2 text-sm text-gray-600">Scan QR to Pay ₹{finalTotal.toFixed(2)}</p>
-                  </div>
-                )}
+                  {!showQR ? (
+                    <button
+                      onClick={() => setShowQR(true)}
+                      className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-md text-sm"
+                    >
+                      Proceed to Payment
+                    </button>
+                  ) : (
+                    <div className="mt-4 text-center">
+                      <img src={Qr} alt="QR Code" className="mx-auto" />
+                      <p className="mt-2 text-sm text-gray-600">
+                        Scan QR to Pay ₹{finalTotal.toFixed(2)}
+                      </p>
+                      <button
+                        onClick={handlePaymentConfirm}
+                        className="mt-3 bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm"
+                      >
+                        I have paid
+                      </button>
+                    </div>
+                  )}
+                </div>
               </>
             )}
           </div>

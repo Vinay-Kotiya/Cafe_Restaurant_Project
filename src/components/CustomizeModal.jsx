@@ -25,7 +25,7 @@ export default function CustomizeModal({ item, isOpen, onClose, onAddToCart }) {
   }
 
   return (
-    <Dialog open={isOpen} onClose={onClose} className="fixed inset-0 z-50 flex items-center justify-center  bg-opacity-20">
+    <Dialog open={isOpen} onClose={onClose} className="fixed inset-0 z-50 flex items-center justify-center shadow  bg-opacity-20">
       <Dialog.Panel as={motion.div} initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ scale: 0.9, opacity: 0 }} className="bg-white p-6 rounded-xl shadow-2xl w-full max-w-xl space-y-5">
         <h2 className="text-xl font-bold">Customize Your {item.name}</h2>
 
@@ -33,7 +33,7 @@ export default function CustomizeModal({ item, isOpen, onClose, onAddToCart }) {
           label="Spice Level"
           type="radio"
           name="spice"
-          options={["Mild", "Medium", "Hot"]}
+          options={["Mild", "Medium", "Hot"," Extra Hot"," Super Hot","Spicy","Very Spicy","Super Hot"]}
           selected={options.spice}
           onChange={(val) => handleOptionChange("spice", val)}
         />
@@ -42,7 +42,7 @@ export default function CustomizeModal({ item, isOpen, onClose, onAddToCart }) {
           label="Toppings"
           type="checkbox"
           name="toppings"
-          options={["Olives", "Mushrooms", "Extra Cheese"]}
+          options={["Olives", "Mushrooms", "Extra Cheese","Lettuce","Tomato","Cucumber","Pickles","Corn","Spinach","Mushrooms"]}
           selected={options.toppings}
           onChange={(val) => handleOptionChange("toppings", val)}
         />
@@ -51,7 +51,7 @@ export default function CustomizeModal({ item, isOpen, onClose, onAddToCart }) {
           label="Sides"
           type="checkbox"
           name="sides"
-          options={["Fries", "Garlic Bread", "Soda"]}
+          options={["Fries", "Garlic Bread", "Soda","Onion Rings","Corn on the Cob","Pickled Vegetables"]}
           selected={options.sides}
           onChange={(val) => handleOptionChange("sides", val)}
         />
