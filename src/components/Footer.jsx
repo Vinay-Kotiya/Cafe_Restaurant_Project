@@ -39,7 +39,7 @@ const Footer = () => {
               </span>
             </li>
 
-            <li>Tushal Hanshola – Frontend Dev (ReactJs,Tailwind CSS )</li>
+            <li>Tushal Hansola – Frontend Dev (ReactJs,Tailwind CSS )</li>
             <li>Ronit Morabiya – Frontend Dev(ReactJs,Tailwind CSS )</li>
             <li className="text-orange-400 font-medium">
               Team Tween Titans | skillsvarz 0.1 Hackathon 2025

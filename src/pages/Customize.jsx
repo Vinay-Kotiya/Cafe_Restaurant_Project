@@ -3,7 +3,8 @@ import { ShoppingCart, Trash2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 // import CustomizeModal from "../Componets/CustomizeModal";
 import CustomizeModal from "../components/CustomizeModal";
-import menu from "../Data/Menu1";
+// import menu from "../Data/Menu1";
+import menu2 from "../data/menu.json"
 import Qr from "/QRCODE.jpg";
 
 export default function Customize() {
@@ -92,7 +93,7 @@ export default function Customize() {
 
       {/* Menu Grid */}
       <div className="flex flex-wrap gap-6 justify-center">
-        {menu.map((item, index) => (
+        {menu2.map((item, index) => (
           <motion.div
             key={index}
             className="group relative bg-white shadow-md border border-slate-200 rounded-lg w-full sm:w-[calc(50%-1.5rem)] md:w-[calc(33.333%-1.5rem)] lg:w-[calc(25%-1.5rem)] overflow-hidden"
