@@ -63,7 +63,6 @@ export default function CustomizeModal({ item, isOpen, onClose, onAddToCart }) {
           name="toppings"
           options={[
             "Olives",
-            "Mushrooms",
             "Extra Cheese",
             "Lettuce",
             "Tomato",
