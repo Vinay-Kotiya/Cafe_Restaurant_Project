@@ -131,7 +131,7 @@ const Navbar = () => {
     <>
       <div
         ref={menuCon}
-        className="absolute bg-white z-50 hidden h-full w-full flex-col"
+        className="absolute bg-gray-300 z-50 hidden h-full w-full flex-col"
       >
         <span className="m-10 flex justify-end">
           <img
@@ -155,7 +155,8 @@ const Navbar = () => {
                   duration={700}
                   className="text-5xl font-bold md:text-base relative after:content-[''] after:absolute after:w-full after:h-[1.5px] after:bg-[#ffbd59] after:left-0 after:bottom-0 after:scale-x-0 after:origin-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-left"
                 >
-                  <TextPressure
+                  {link}
+                  {/* <TextPressure
                     text={link}
                     flex={false}
                     alpha={false}
@@ -166,7 +167,7 @@ const Navbar = () => {
                     textColor="#ffffff"
                     strokeColor="#000"
                     minFontSize={36}
-                  />
+                  /> */}
                 </Link>
               </li>
             ))}

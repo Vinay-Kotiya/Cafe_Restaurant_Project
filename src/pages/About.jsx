@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import RollingGallery from "../ReactBits/RollingGallery/RollingGallery";
 import TextPressure from "../ReactBits/TextPressure/TextPressure";
+import Magnet from "../ReactBits/Magnet/Magnet";
 const Section = ({ title, children }) => (
   <motion.section
     className="max-w-4xl mx-auto py-12 px-6"
@@ -57,7 +58,7 @@ export default function About() {
   return (
     <main id="about" className="bg-black w-full text-gray-100 min-h-screen">
       <div className="pt-12 pb-8 text-center w-full">
-        <h1 className="text-4xl font-bold mb-2 text-primary">
+        {/* <h1 className="text-4xl font-bold mb-2 text-primary">
           <TextPressure
             text={"Discover Annapurna"}
             flex={false}
@@ -74,7 +75,31 @@ export default function About() {
         <p className="text-muted-foreground max-w-xl mx-auto">
           Experience the essence of authentic Indian vegetarian cuisine and
           heartfelt hospitality.
-        </p>
+        </p> */}
+        <Magnet padding={100} disabled={false} magnetStrength={5}>
+          <div
+            // style={{ position: "relative", height: "300px" }}
+            className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg"
+          >
+            <TextPressure
+              text={"Discover Annapurna"}
+              flex={false}
+              alpha={false}
+              stroke={true}
+              width={true}
+              weight={true}
+              italic={true}
+              textColor="#ffffff"
+              strokeColor="#000"
+              minFontSize={36}
+            />
+          </div>
+
+          <p className="text-lg md:text-xl text-center font-light drop-shadow-lg">
+            Experience the essence of authentic Indian vegetarian cuisine and
+            heartfelt hospitality.
+          </p>
+        </Magnet>
       </div>
 
       {/* Rolling Gallery as Main Visual Section */}

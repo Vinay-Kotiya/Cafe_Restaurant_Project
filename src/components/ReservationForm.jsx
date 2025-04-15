@@ -65,7 +65,7 @@ export default function ReservationForm() {
       variant="blue"
       gap={3}
       speed={100}
-      className="w-full h-full flex items-center justify-center"
+      className="w-full h-full flex items-center z-[999] justify-center"
       // className="w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto p-6 sm:p-8 m-4 bg-white z-50 rounded-2xl shadow-lg"
     >
       <div className="w-full max-w-md absolute sm:max-w-lg md:max-w-xl mx-auto p-6 sm:p-8  bg-transparent z-50 rounded-2xl shadow-lg">
@@ -84,7 +84,7 @@ export default function ReservationForm() {
             <DatePicker
               selected={formData.date}
               onChange={(date) => handleChange("date", date)}
-              className="w-full border p-2 rounded mt-1 bg-white"
+              className="w-full border p-1 md:p-2 rounded mt-1 bg-white"
               minDate={new Date()}
               dateFormat="MMMM d, yyyy"
             />
@@ -125,7 +125,7 @@ export default function ReservationForm() {
               value={formData.guests}
               onChange={(e) => handleChange("guests", parseInt(e.target.value))}
               min="1"
-              className="w-full border p-2 rounded mt-1 bg-white"
+              className="w-full border p-1 md:p-2 rounded mt-1 bg-white"
               placeholder="Number of guests"
             />
             {errors.guests && (
@@ -140,7 +140,7 @@ export default function ReservationForm() {
               type="text"
               value={formData.name}
               onChange={(e) => handleChange("name", e.target.value)}
-              className="w-full border p-2 rounded mt-1 bg-white"
+              className="w-full border p-1 md:p-2 rounded mt-1 bg-white"
               placeholder="Your name"
             />
             {errors.name && (
@@ -155,7 +155,7 @@ export default function ReservationForm() {
               type="tel"
               value={formData.phone}
               onChange={(e) => handleChange("phone", e.target.value)}
-              className="w-full border p-2 rounded mt-1 bg-white"
+              className="w-full border p-1 md:p-2 rounded mt-1 bg-white"
               placeholder="Your phone number"
             />
             {errors.phone && (
@@ -170,7 +170,7 @@ export default function ReservationForm() {
               type="email"
               value={formData.email}
               onChange={(e) => handleChange("email", e.target.value)}
-              className="w-full border p-2 rounded mt-1 bg-white"
+              className="w-full border p-1 md:p-2rounded mt-1 bg-white"
               placeholder="you@example.com"
             />
             {errors.email && (

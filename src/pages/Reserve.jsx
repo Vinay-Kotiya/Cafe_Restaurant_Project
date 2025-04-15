@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ReservationForm from "../components/ReservationForm";
 import ImageTrail from "../ReactBits/ImageTrail/ImageTrail";
 import menuData from "../data/menu.json";
+import Magnet from "../ReactBits/Magnet/Magnet";
+import TextPressure from "../ReactBits/TextPressure/TextPressure";
+
 import ScrollFloat from "../ReactBits/ScrollFloat/ScrollFloat";
 
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 const Reserve = () => {
+  useEffect(() => {
+    ScrollTrigger.refresh();
+  }, []);
   const ImageObject = menuData.map((item) => {
     return item.image;
   });
@@ -18,38 +26,48 @@ const Reserve = () => {
       {/* Content Wrapper */}
       <div className="relative z-10 flex flex-col md:flex-row w-full h-full">
         <div className=" w-full md:w-[50%] flex flex-col justify-center  items-center px-4">
-          <div className="flex top-0 left-0 w-full h-full absolute overflow-hidden z-0">
+          <div className="flex top-0 left-0  w-full h-full absolute overflow-hidden ">
             <ImageTrail
               key="reservation-trail"
-              className="z-[9999] h-2"
+              className="z-10 h-2"
               items={ImageObject}
               variant={4}
             />
           </div>
-          <h2 className="text-6xl font-bold  text-center">
-            <ScrollFloat
-              animationDuration={1}
-              ease="back.inOut(2)"
-              scrollStart="center bottom+=50%"
-              scrollEnd="bottom bottom-=40%"
-              stagger={0.03}
+          <Magnet padding={100} disabled={false} magnetStrength={5}>
+            <div
+              // style={{ position: "relative", height: "300px" }}
+              className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg"
             >
-              Reserve Your Table
-            </ScrollFloat>
-          </h2>
-          {/* <h2 className="text-6xl font-bold text-center">Reserve Your Table</h2> */}
-          <p className="text-gray-600 text-xl text-center mt-2">
-            <ScrollFloat
-              animationDuration={1}
-              ease="back.inOut(2)"
-              scrollStart="center bottom+=50%"
-              scrollEnd="bottom bottom-=40%"
-              stagger={0.03}
-            >
+              <TextPressure
+                text={"Reserve Your Table Today!"}
+                flex={false}
+                alpha={false}
+                stroke={true}
+                width={true}
+                weight={true}
+                italic={true}
+                textColor="#ffffff"
+                strokeColor="#000"
+                minFontSize={36}
+              />
+            </div>
+
+            <p className="text-lg md:text-xl text-center font-light drop-shadow-lg">
               Planning a visit? Reserve your spot in just a few clicks. We’ll
               make sure your table is ready!
-            </ScrollFloat>
-          </p>
+            </p>
+          </Magnet>
+
+          {/* <h2 className="text-6xl font-bold text-center z-10 relative">
+            Reserve Your Table Today!
+          </h2>
+
+          <p className="text-gray-600 text-xl text-center mt-2 z-10 relative">
+            Planning a visit? Reserve your spot in just a few clicks. We’ll make
+            sure your table is ready!
+          </p> */}
+
           <img
             className="max-w-[80%] mt-4 hidden md:flex"
             src={

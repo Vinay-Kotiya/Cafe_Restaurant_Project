@@ -8,6 +8,7 @@ import barImg from "../assets/bar.avif";
 import MagnetLines from "../ReactBits/MagnetLines/MagnetLines";
 import TextPressure from "../ReactBits/TextPressure/TextPressure";
 import Aurora from "../ReactBits/Aurora/Aurora";
+import Magnet from "../ReactBits/Magnet/Magnet";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -73,7 +74,7 @@ const VirtualTour = () => {
   }, []);
 
   return (
-    <div ref={containerRef} id="virtual tour" className="w-full">
+    <div ref={containerRef} id="virtual tour" className="w-full ">
       {sections.map((section, idx) => (
         <div
           key={idx}
@@ -95,30 +96,33 @@ const VirtualTour = () => {
             style={{ margin: "2rem auto" }}
             className="z-10"
           />
-          <div className="text z-10 text-white absolute text-center px-6">
+          <div className=" z-50 text-white absolute text-center px-6">
             {/* <h2 className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg">
               {section.title}
             </h2> */}
-            <div
-              // style={{ position: "relative", height: "300px" }}
-              className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg"
-            >
-              <TextPressure
-                text={section.title}
-                flex={false}
-                alpha={false}
-                stroke={true}
-                width={true}
-                weight={true}
-                italic={true}
-                textColor="#ffffff"
-                strokeColor="#000"
-                minFontSize={36}
-              />
-            </div>
-            <p className="text-lg md:text-xl font-light drop-shadow-lg">
-              {section.text}
-            </p>
+            <Magnet padding={100} disabled={false} magnetStrength={5}>
+              <div
+                // style={{ position: "relative", height: "300px" }}
+                className="text-4xl md:text-6xl font-bold mb-4 drop-shadow-lg"
+              >
+                <TextPressure
+                  text={section.title}
+                  flex={false}
+                  alpha={false}
+                  stroke={true}
+                  width={true}
+                  weight={true}
+                  italic={true}
+                  textColor="#ffffff"
+                  strokeColor="#000"
+                  minFontSize={36}
+                />
+              </div>
+
+              <p className="text-lg md:text-xl font-light drop-shadow-lg">
+                {section.text}
+              </p>
+            </Magnet>
           </div>
           <div className="absolute top-0 left-0 w-full h-full bg-black/40" />
         </div>

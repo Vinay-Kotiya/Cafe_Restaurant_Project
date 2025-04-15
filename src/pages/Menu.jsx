@@ -4,6 +4,7 @@ import menuData from "../data/menu.json";
 import CircularGallery from "../ReactBits/CircularGallery/CircularGallery";
 import TextPressure from "../ReactBits/TextPressure/TextPressure";
 import ScrollVelocity from "../ReactBits/ScrollVelocity/ScrollVelocity";
+import Magnet from "../ReactBits/Magnet/Magnet";
 const cardVariants = {
   hidden: { opacity: 0, y: 40 },
   visible: (i) => ({
@@ -42,22 +43,26 @@ export default function Menu() {
       id="menu"
       className=" w-full md:h-screen h-screen overflow-hidden bg-gray-300 flex justify-center items-center flex-col"
     >
-      <h1 className="text-4xl  m-2 ">
-        <TextPressure
-          text={"MENU"}
-          flex={true}
-          alpha={false}
-          stroke={true}
-          width={false}
-          weight={true}
-          italic={true}
-          textColor="#ffffff"
-          strokeColor="#000"
-          minFontSize={36}
-        />
-      </h1>
+      <Magnet padding={100} disabled={false} magnetStrength={5}>
+        <h1 className="text-4xl  m-2 ">
+          <TextPressure
+            text={"MENU"}
+            flex={true}
+            alpha={false}
+            stroke={true}
+            width={false}
+            weight={true}
+            italic={true}
+            textColor="#ffffff"
+            strokeColor="#000"
+            minFontSize={36}
+          />
+        </h1>
+      </Magnet>
+      <Magnet padding={100} disabled={false} magnetStrength={5}>
+        <p className="text-gray-500">Explore our offerings</p>
+      </Magnet>
 
-      <p className="text-gray-500">Explore our offerings</p>
       <div className="h-full w-full relative">
         <CircularGallery
           items={itemsDetails}
@@ -71,7 +76,6 @@ export default function Menu() {
         velocity={100}
         className="custom-scroll-text font-mono"
       />
-
       {/* <div className="flex flex-wrap md:flex-nowrap gap-3 md:gap-4 overflow-x-auto md:overflow-x-visible pb-2 mb-6 border-b">
         {categories.map((cat) => (
           <button
