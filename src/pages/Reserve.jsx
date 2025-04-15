@@ -11,13 +11,13 @@ const Reserve = () => {
   return (
     <div
       id="reserve"
-      className="relative h-screen w-full bg-gray-300 flex items-center"
+      className="relative  w-full bg-gray-300 flex items-center"
     >
       {/* ImageTrail rendered as full-screen fixed background */}
 
       {/* Content Wrapper */}
       <div className="relative z-10 flex flex-col md:flex-row w-full h-full">
-        <div className="md:h-full w-full md:w-[50%] flex flex-col justify-center  items-center px-4">
+        <div className=" w-full md:w-[50%] flex flex-col justify-center  items-center px-4">
           <div className="flex top-0 left-0 w-full h-full absolute overflow-hidden z-0">
             <ImageTrail
               key="reservation-trail"
@@ -58,7 +58,7 @@ const Reserve = () => {
           />
         </div>
 
-        <div className="h-full  md:w-[50%] flex items-center justify-center px-4">
+        <div className="md:h-full h-screen  md:w-[50%] flex items-center justify-center px-4">
           <ReservationForm className=" z-50" />
         </div>
       </div>

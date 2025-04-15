@@ -40,7 +40,7 @@ export default function Menu() {
   return (
     <div
       id="menu"
-      className=" w-full h-screen overflow-hidden bg-gray-300 flex justify-center items-center flex-col"
+      className=" w-full md:h-screen h-screen overflow-hidden bg-gray-300 flex justify-center items-center flex-col"
     >
       <h1 className="text-4xl  m-2 ">
         <TextPressure

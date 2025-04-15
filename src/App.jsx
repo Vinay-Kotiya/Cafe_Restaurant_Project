@@ -11,6 +11,7 @@ import Customize from "./pages/Customize";
 
 import CircularText from "./ReactBits/CircularText/CircularText";
 import Footer from "./components/Footer";
+import About from "./pages/About";
 
 function App() {
   useSmoothScroll();
@@ -31,6 +32,7 @@ function App() {
         <Reserve />
         <Customize />
         <VirtualTour />
+        <About />
         <Footer />
       </div>
     </>

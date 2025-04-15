@@ -15,7 +15,14 @@ const Navbar = () => {
   const menuList = useRef(null);
   // State to hold the current icon
   const [icon, setIcon] = useState(dayImg); // Default to day icon
-  const navLinks = ["Home", "Menu", "Reserve", "Customize", "Virtual Tour"];
+  const navLinks = [
+    "Home",
+    "Menu",
+    "Reserve",
+    "Customize",
+    "Virtual Tour",
+    "About",
+  ];
   const logo = useRef(null);
   const menuComeAnimation = () => {
     // alert("animation call");
@@ -192,7 +199,7 @@ const Navbar = () => {
                 smooth={true}
                 offset={0}
                 duration={700}
-                className=" text-2xl text-[#000000] drop-shadow-[0_1px_1px_rgba(1,1,1,1)] hover:text-[#c25a5a] font-bold gap-7 relative after:content-[''] after:absolute after:w-full after:h-[1.5px] after:bg-[#ffbd59] after:left-0 after:bottom-0 after:scale-x-0 after:origin-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-left"
+                className=" text-xl text-[#000000] drop-shadow-[0_1px_1px_rgba(1,1,1,1)] hover:text-[#c25a5a] font-bold gap-7 relative after:content-[''] after:absolute after:w-full after:h-[1.5px] after:bg-[#ffbd59] after:left-0 after:bottom-0 after:scale-x-0 after:origin-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-left"
               >
                 <TextPressure
                   text={link}

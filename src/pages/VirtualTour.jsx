@@ -14,6 +14,13 @@ const sections = [
   {
     title: "Dining Area",
     text: "Experience cozy ambiance and warm hospitality.",
+    about: `Welcome to Annapurna – where every meal is a celebration of tradition, taste, and togetherness.
+  
+  At Annapurna, we believe food is more than just nourishment — it’s an emotion, a memory, a feeling of home. Named after the Hindu goddess of food and abundance, our restaurant is a tribute to the rich flavors of authentic Indian vegetarian cuisine served with love and care.
+  
+  From the moment you step in, we promise you an experience that delights all your senses. The aroma of freshly ground spices, the warm hospitality, the cozy ambiance, and dishes crafted with passion — everything is designed to make you feel at home.
+  
+  Whether you're here for a hearty family dinner, a peaceful solo meal, or a festive gathering, Annapurna offers a soulful dining experience where every guest is family.`,
     image: diningImg,
   },
   {

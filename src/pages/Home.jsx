@@ -112,7 +112,7 @@ const Home = () => {
             >
               <Magnet padding={100} disabled={false} magnetStrength={5}>
                 <button className="loadAnimation3 cta flex justify-center items-center">
-                  <span>Explore Now</span>
+                  <span>Explore&nbsp;Now</span>
                   <svg width="15px" height="10px" viewBox="0 0 13 10">
                     <path d="M1,5 L11,5"></path>
                     <polyline points="8 1 12 5 8 9"></polyline>
@@ -141,7 +141,7 @@ const Home = () => {
             </Link>
           </div>
         </div>
-        <div className="loadImageAnimation md:w-[45%] md:flex justify-center items-center">
+        <div className="loadImageAnimation md:w-[45%] md:flex hidden justify-center items-center">
           {/* <img
             className="h-full"
             // src="https://t4.ftcdn.net/jpg/02/84/46/89/360_F_284468940_1bg6BwgOfjCnE3W0wkMVMVqddJgtMynE.jpg"
