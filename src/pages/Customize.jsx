@@ -192,14 +192,6 @@ export default function Customize() {
         <div className="grid grid-cols-1 w-full bg-transparent p-4 rounded-2xl  sm:grid-cols-2 md:grid-cols-3 gap-6">
           {/* <div className="flex flex-wrap gap-6 justify-center"> */}
           {filteredMenu.slice(0, visibleCount).map((item, index) => (
-            // <motion.div
-            //   key={index}
-            //   className="group relative bg-white shadow-md border border-slate-200 rounded-lg w-full sm:w-[calc(50%-1.5rem)] md:w-[calc(33.333%-1.5rem)] lg:w-[calc(25%-1.5rem)] overflow-hidden"
-            //   initial={{ opacity: 0, y: 30 }}
-            //   whileInView={{ opacity: 1, y: 0 }}
-            //   viewport={{ once: true }}
-            //   transition={{ duration: 0.3, delay: index * 0.2 + 1 }}
-            // >
             <motion.div
               key={index}
               custom={index}

@@ -73,20 +73,15 @@ const Home = () => {
         sparkCount={8}
         duration={400}
       >
-        {/* <div   className="h-screen flex-col items-center w-full"> */}
         <Navbar />
 
         <div className="flex justify-center items-center h-full flex-col md:flex-row  bg-gray-300">
           <div className="md:w-[45%] w-full p-5 ">
-            {/* <h1 className="loadAnimation1 headding md:text-6xl text-4xl">
-            “Authentic Flavors of India, Served with Love”
-          </h1> */}
             <BlurText
               text=" “Authentic Flavors of India, Served with Love”"
               delay={100}
               animateBy="words"
               direction="top"
-              // onAnimationComplete={handleAnimationComplete}
               className="loadAnimation1 headding md:text-6xl text-4xl"
             />
             <div
@@ -94,18 +89,11 @@ const Home = () => {
               style={{ position: "relative" }}
               className="md:text-xl text-3xl"
             >
-              {/* <div className="loadAnimation2 text-gray-700  text-2xl">
-              Experience authentic vegetarian Indian cuisine crafted with love,
-              tradition, and fresh ingredients. From classic curries to sizzling
-              tandoori dishes, we bring you the flavors of India—straight from
-              our kitchen to your table..
-            </div> */}
               <BlurText
                 text="Experience authentic vegetarian Indian cuisine crafted with love,tradition, and fresh ingredients. From classic curries to sizzling tandoori dishes, we bring you the flavors of India—straight from our kitchen to your table.."
                 delay={100}
                 animateBy="words"
                 direction="top"
-                // onAnimationComplete={handleAnimationComplete}
                 className="loadAnimation2 text-gray-700  text-2xl"
               />
             </div>
@@ -150,11 +138,6 @@ const Home = () => {
             </div>
           </div>
           <div className="loadImageAnimation md:w-[45%] md:flex hidden justify-center items-center">
-            {/* <img
-            className="h-full"
-            // src="https://t4.ftcdn.net/jpg/02/84/46/89/360_F_284468940_1bg6BwgOfjCnE3W0wkMVMVqddJgtMynE.jpg"
-            src={HeroImage}
-          /> */}
             <TiltedCard
               imageSrc={HeroImage}
               altText="Kendrick Lamar - GNX Album Cover"
@@ -168,9 +151,6 @@ const Home = () => {
               showMobileWarning={false}
               showTooltip={true}
               displayOverlayContent={true}
-              // overlayContent={
-              //   <p className="tilted-card-demo-text">Kendrick Lamar - GNX</p>
-              // }
             />
           </div>
         </div>

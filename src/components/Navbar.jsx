@@ -1,13 +1,11 @@
 import React, { use, useEffect, useRef, useState } from "react";
 import { Link } from "react-scroll";
 import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import dayImg from "../assets/day-of-sun.svg";
 import nightImg from "../assets/moon-stars.svg";
-// import logoImg from "../assets/Annapurna_logo.png";
 import logoImg from "../assets/logo22.png";
 import TextPressure from "../ReactBits/TextPressure/TextPressure";
-import { motion, useScroll } from "motion/react";
+
 const Navbar = () => {
   const menuCon = useRef(null);
   const menuIconIn = useRef(null);

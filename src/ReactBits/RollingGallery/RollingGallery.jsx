@@ -182,14 +182,7 @@ const RollingGallery = ({
                   amplitude={1.0}
                   speed={0.5}
                   className="absolute  flex h-full w-full rounded"
-                >
-                  {/* <h3 className="text-lg font-bold mb-2 z-50">
-                    {gallerySections[i]?.title}
-                  </h3>
-                  <p className="text-sm whitespace-pre-line z-50">
-                    {gallerySections[i]?.text}
-                  </p> */}
-                </Aurora>
+                ></Aurora>
                 <div className="absolute inset-0 flex items-center justify-center text-center p-4 flex-col">
                   <h3 className="text-lg font-bold mb-2 z-50">
                     {gallerySections[i]?.title}
