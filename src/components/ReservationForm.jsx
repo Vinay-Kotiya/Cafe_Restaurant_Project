@@ -65,10 +65,10 @@ export default function ReservationForm() {
       variant="blue"
       gap={3}
       speed={100}
-      className="w-full h-full  m-2 md:m-10 top-0 left-0 right-0 bottom-0 flex items-center justify-center"
+      className="w-full h-full flex items-center justify-center"
       // className="w-full max-w-md sm:max-w-lg md:max-w-xl mx-auto p-6 sm:p-8 m-4 bg-white z-50 rounded-2xl shadow-lg"
     >
-      <div className="w-full  max-w-md absolute sm:max-w-lg md:max-w-xl mx-auto p-6 sm:p-8  bg-transparent z-50 rounded-2xl shadow-lg">
+      <div className="w-full max-w-md absolute sm:max-w-lg md:max-w-xl mx-auto p-6 sm:p-8  bg-transparent z-50 rounded-2xl shadow-lg">
         {/* <h1 className="text-3xl sm:text-4xl font-bold mb-2 text-center text-gray-800 z-50">
           Reserve a Table
         </h1> */}
@@ -76,7 +76,7 @@ export default function ReservationForm() {
 
         <form
           onSubmit={handleSubmit}
-          className="space-y-4 z-50 bg-transparent h-full"
+          className="space-y-2 z-50 bg-transparent h-full"
         >
           {/* Date */}
           <div>

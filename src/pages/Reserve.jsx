@@ -11,7 +11,7 @@ const Reserve = () => {
   return (
     <div
       id="reserve"
-      className="relative  w-full bg-gray-300 flex items-center"
+      className="relative md:h-screen p-3  w-full bg-gray-300 flex items-center"
     >
       {/* ImageTrail rendered as full-screen fixed background */}
 
@@ -58,7 +58,7 @@ const Reserve = () => {
           />
         </div>
 
-        <div className="md:h-full h-screen  md:w-[50%] flex items-center justify-center px-4">
+        <div className="md:h-full h-screen md:w-[50%] flex items-center justify-center">
           <ReservationForm className=" z-50" />
         </div>
       </div>

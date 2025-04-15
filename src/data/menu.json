@@ -4,7 +4,7 @@
     "category": "Starter",
     "name": "Paneer Tikka",
     "price": 180,
-    "image": "https://img.freepik.com/premium-photo/paneer-tikka-masala-is-famous-indian-dish-served-rustic-wooden-background-selective-focus_726363-1043.jpg",
+    "image": "https://sharethespice.com/wp-content/uploads/2024/02/Paneer-Tikka-Featured.jpg",
     "description": "Grilled cottage cheese cubes marinated in spices."
   },
   {
@@ -20,7 +20,7 @@
     "category": "Starter",
     "name": "Hara Bhara Kabab",
     "price": 150,
-    "image": "https://www.ifbappliances.com/media/catalog/product/cache/cbfae812fa3f53c2f8e749eb3dc52e2d/h/a/hara_bhara_kebab_desktop_main_image_519x620.jpg",
+    "image": "https://www.secondrecipe.com/wp-content/uploads/2021/12/hara-bhara-kebab-scaled.jpg",
     "description": "Spinach and green pea patties shallow fried."
   },
   {
@@ -52,7 +52,7 @@
     "category": "Main Course",
     "name": "Mix Veg Curry",
     "price": 200,
-    "image": "https://food.annapurnaderoyal.com/wp-content/uploads/2021/07/Mixed-Veg-Curry1.jpg",
+    "image": "https://shwetainthekitchen.com/wp-content/uploads/2023/03/mixed-vegetable-curry.jpg",
     "description": "Seasonal vegetables cooked in spiced curry."
   },
   {
@@ -60,7 +60,7 @@
     "category": "Rice & Biryani",
     "name": "Veg Biryani",
     "price": 200,
-    "image": "https://png.pngtree.com/thumb_back/fh260/background/20240913/pngtree-highly-detailed-veg-biryani-or-pulav-fried-rice-image_16193333.jpg",
+    "image": "https://www.sharmispassions.com/wp-content/uploads/2022/03/VegBiryani4.jpg",
     "description": "Aromatic basmati rice cooked with vegetables and spices."
   },
   {
@@ -132,7 +132,7 @@
     "category": "Main Course",
     "name": "Palak Paneer",
     "price": 250,
-    "image": "https://www.maggi.in/sites/default/files/srh_recipes/9d18d92828d57efca22037fc6727d035.jpg",
+    "image": "https://cookingfromheart.com/wp-content/uploads/2018/04/Palak-Paneer-3.jpg",
     "description": "Spinach-based curry with soft paneer cubes."
   },
   {
@@ -180,7 +180,7 @@
     "category": "Dessert",
     "name": "Besan Ladoo",
     "price": 70,
-    "image": "https://aartimadan.com/wp-content/uploads/2022/10/Besan-Ladoo.jpg",
+    "image": "https://prashantcorner.com/cdn/shop/files/BesanLaddooSR-1.jpg?v=1717768060",
     "description": "Sweet round balls made from gram flour and ghee."
   },
   {
@@ -198,5 +198,13 @@
     "price": 180,
     "image": "https://t3.ftcdn.net/jpg/04/47/95/44/360_F_447954458_KRb8tDCav1JTFjZchILTXCyKYGcDbsKg.jpg",
     "description": "Roasted and mashed eggplant cooked with onion, tomato, and spices."
+  },
+  {
+    "id": 24,
+    "category": "Dessert",
+    "name": "Gulab Jamun",
+    "price": 80,
+    "image": "https://www.vegrecipesofindia.com/wp-content/uploads/2022/10/gulab-jamun-recipe-01.jpg",
+    "description": "Soft, deep-fried milk-based dumplings soaked in fragrant sugar syrup."
   }
 ]

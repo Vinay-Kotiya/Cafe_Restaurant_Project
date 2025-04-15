@@ -61,7 +61,7 @@ export default function Menu() {
       <div className="h-full w-full relative">
         <CircularGallery
           items={itemsDetails}
-          bend={1}
+          bend={0.5}
           textColor="#000"
           borderRadius={0.05}
         />
@@ -69,7 +69,7 @@ export default function Menu() {
       <ScrollVelocity
         texts={["* ANNAPURNA", "* INDIAN CUISINE"]}
         velocity={100}
-        className="custom-scroll-text"
+        className="custom-scroll-text font-mono"
       />
 
       {/* <div className="flex flex-wrap md:flex-nowrap gap-3 md:gap-4 overflow-x-auto md:overflow-x-visible pb-2 mb-6 border-b">

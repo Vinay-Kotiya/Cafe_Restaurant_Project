@@ -190,7 +190,10 @@ const Navbar = () => {
           />
         </span>
 
-        <ul ref={menuList} className="hidden gap-5 md:flex items-center">
+        <ul
+          ref={menuList}
+          className="hidden text-xl gap-5 md:flex items-center"
+        >
           {navLinks.map((link, index) => (
             <li key={index}>
               <Link
@@ -199,7 +202,7 @@ const Navbar = () => {
                 smooth={true}
                 offset={0}
                 duration={700}
-                className=" text-xl text-[#000000] drop-shadow-[0_1px_1px_rgba(1,1,1,1)] hover:text-[#c25a5a] font-bold gap-7 relative after:content-[''] after:absolute after:w-full after:h-[1.5px] after:bg-[#ffbd59] after:left-0 after:bottom-0 after:scale-x-0 after:origin-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-left"
+                className=" text-[#000000] drop-shadow-[0_1px_1px_rgba(1,1,1,1)] hover:text-[#c25a5a] font-bold gap-7 relative after:content-[''] after:absolute after:w-full after:h-[1.5px] after:bg-[#ffbd59] after:left-0 after:bottom-0 after:scale-x-0 after:origin-right after:transition-transform after:duration-300 hover:after:scale-x-100 hover:after:origin-left"
               >
                 <TextPressure
                   text={link}

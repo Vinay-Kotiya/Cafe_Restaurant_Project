@@ -7,6 +7,7 @@ import kitchenImg from "../assets/kitchen.avif";
 import barImg from "../assets/bar.avif";
 import MagnetLines from "../ReactBits/MagnetLines/MagnetLines";
 import TextPressure from "../ReactBits/TextPressure/TextPressure";
+import Aurora from "../ReactBits/Aurora/Aurora";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -124,11 +125,31 @@ const VirtualTour = () => {
       ))}
 
       {/* ✅ Optional 360° Virtual Tour */}
+
       <div className="h-screen w-full flex flex-col justify-center items-center bg-black text-white">
-        <h2 className="text-3xl md:text-5xl font-bold mb-6">
-          360° Virtual Tour
-        </h2>
-        <div className="w-full max-w-5xl aspect-video px-4">
+        <Aurora
+          colorStops={["#3A29FF", "#FF94B4", "#FF3232"]}
+          blend={0.5}
+          amplitude={1.0}
+          speed={0.5}
+          className="absolute  flex h-full w-full rounded"
+        />
+
+        <div className="w-full absolute z-50 max-w-5xl aspect-video px-4">
+          <h2 className="text-3xl z-50 md:text-5xl font-bold text-center mb-6">
+            <TextPressure
+              text={" 360° Virtual Tour"}
+              flex={false}
+              alpha={false}
+              stroke={true}
+              width={true}
+              weight={true}
+              italic={true}
+              textColor="#ffffff"
+              strokeColor="#000"
+              minFontSize={36}
+            />
+          </h2>
           {/* <iframe
             src="https://www.klapty.com/tour-link-or-similar" // 🔄 Replace with your 360° embed link
             frameBorder="0"
